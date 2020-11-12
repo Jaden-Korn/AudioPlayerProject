@@ -8,11 +8,13 @@ from pygame import mixer
 
 class AudioPlayer(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
+        # Подключение интерфейса
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         mixer.init()
 
+        # Поиск диска и вывод его на экран (по умолчанию: C:\)
         path_to_music = os.getcwd() + '\\root.txt'
         if os.path.exists(path_to_music):
             file = open(u'' + path_to_music)
@@ -32,6 +34,9 @@ class AudioPlayer(QtWidgets.QMainWindow):
         self.scanning()
 
     def scanning(self):
+        '''
+        Проверка и поиск на диске файлов формата mp3. Вывод папок с файлами формата mp3 в виджет слева.
+        '''
         path_to_the_file = list()
         folders_with_the_files = list()
         path_to_scanning = str(self.ui.lineEdit.text()).strip()
@@ -51,6 +56,9 @@ class AudioPlayer(QtWidgets.QMainWindow):
             self.ui.listWidget.addItem(folder.strip())
 
     def files(self):
+        '''
+        Вывод в виджет справа всех файлов mp3 формата.
+        '''
         try:
             self.have_files_to_play = True
             self.songs = list()
