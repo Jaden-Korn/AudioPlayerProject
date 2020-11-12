@@ -26,7 +26,6 @@ class AudioPlayer(QtWidgets.QMainWindow):
         self.ui.pushButton_4.clicked.connect(self.pause)
         self.ui.pushButton.clicked.connect(self.play)
         self.ui.pushButton_2.clicked.connect(self.stop)
-        self.ui.horizontalScrollBar.hide()
         self.songs = []
         self.is_pause = False
         self.have_files_to_play = False
